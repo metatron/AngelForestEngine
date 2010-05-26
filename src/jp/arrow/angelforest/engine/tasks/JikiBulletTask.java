@@ -19,8 +19,12 @@ public class JikiBulletTask extends AbstractBulletTask {
 
 	@Override
 	protected void generateBullet() {
+		if(SystemParameters.jikiBullets.size()  == 1) {
+//			Log.e(null, "angle: " + SystemParameters.jikiBullets.get(0).getAngle());
+			return ;
+		}
 		ArrayList<BulletParameters> genedBulletParams = jiki.createOriginalBulletParameters();
-		Log.e(null, "genedBulletParam size: " + genedBulletParams.size() + ", jikibulletArray size: " + SystemParameters.jikiBullets.size());
+//		Log.e(null, "genedBulletParam size: " + genedBulletParams.size() + ", jikibulletArray size: " + SystemParameters.jikiBullets.size());
 		if(genedBulletParams.size() > 0) {
 			SystemParameters.jikiBullets.addAll(BulletFactory.create(genedBulletParams));
 		}

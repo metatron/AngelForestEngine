@@ -2,6 +2,8 @@ package jp.arrow.angelforest.engine.abstructclass;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 import jp.arrow.angelforest.engine.core.TexturePolygon;
 import jp.arrow.angelforest.engine.param.SystemParameters;
 import jp.arrow.angelforest.engine.utils.Timer;

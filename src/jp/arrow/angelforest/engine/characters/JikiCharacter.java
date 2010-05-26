@@ -1,6 +1,8 @@
 package jp.arrow.angelforest.engine.characters;
 
 import java.util.ArrayList;
+
+import android.util.Log;
 import jp.arrow.angelforest.engine.param.BulletParameters;
 import jp.arrow.angelforest.engine.param.CharacterParameters;
 import jp.arrow.angelforest.main.R;
@@ -19,6 +21,7 @@ public class JikiCharacter extends LiveCharacter {
 //		createOriginalBulletParameters();
 	}
 	
+	int angle=90;
 	@Override
 	public ArrayList<BulletParameters> createOriginalBulletParameters() {
 		//TODO create bulletParam. this is temporary
@@ -30,9 +33,9 @@ public class JikiCharacter extends LiveCharacter {
 								null, //right
 								10, //hp
 								10, //power
-								2, //interval
-								20f, //speed
-								0f, //angle
+								5, //interval
+								25f, //speed
+								angle, //angle
 								BulletParameters.TYPE_STRAIGHT //type
 								);
 		bulletParam.setX(getX());
@@ -40,6 +43,7 @@ public class JikiCharacter extends LiveCharacter {
 		
 		ArrayList<BulletParameters> genedBullets = new ArrayList<BulletParameters>();
 		if(param.getCurrentTime()%bulletParam.getInterval() == 0) {
+//			angle--;
 			//add parameters to array and return it
 			genedBullets.add(bulletParam);
 		}
