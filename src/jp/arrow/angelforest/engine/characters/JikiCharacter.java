@@ -3,46 +3,55 @@ package jp.arrow.angelforest.engine.characters;
 import java.util.ArrayList;
 
 import android.util.Log;
+import jp.arrow.angelforest.engine.param.BasicParameters;
 import jp.arrow.angelforest.engine.param.BulletParameters;
 import jp.arrow.angelforest.engine.param.CharacterParameters;
+import jp.arrow.angelforest.engine.param.TextureParameters;
 import jp.arrow.angelforest.main.R;
 
 public class JikiCharacter extends LiveCharacter {
-	private ArrayList<Integer> nomotion;
+	private TextureParameters textureParameters;
 	
 	public JikiCharacter(CharacterParameters param) {
 		super(param);
 		
 		//init bullets
-		nomotion = new ArrayList<Integer>();
-		nomotion.add(R.drawable.enemy_normal_shot_01);
+		ArrayList<Integer> nomotions = new ArrayList<Integer>();
+		nomotions.add(R.drawable.enemy_normal_shot_01);
+		textureParameters = new TextureParameters(nomotions, null, null, null, null);
 		
 		//first bullet creation
 //		createOriginalBulletParameters();
 	}
 	
-	int angle=90;
+	int angle=-90;
 	@Override
 	public ArrayList<BulletParameters> createOriginalBulletParameters() {
 		//TODO create bulletParam. this is temporary
+		BasicParameters basicParameters = new BasicParameters(
+				getX(), //float x 
+				getY(), //float y 
+				10, 	//float speed
+				5, 		//float hitR 
+				10,		//int dmg
+				10,		//int hp
+				-90,	//float angle
+				20,		//int interval
+				0,		//float angleRate
+				0,		//float speedAccelerate
+				0		//float angleAccelerate
+		);
+
 		BulletParameters bulletParam = new BulletParameters(
-								nomotion, //nomotion
-								null, //down
-								null, //up
-								null, //left
-								null, //right
-								10, //hp
-								10, //power
-								5, //interval
-								25f, //speed
-								angle, //angle
+								textureParameters, //right
+								basicParameters,
 								BulletParameters.TYPE_STRAIGHT //type
 								);
-		bulletParam.setX(getX());
-		bulletParam.setY(getY());
+		bulletParam.getBasicParameters().setX(getX());
+		bulletParam.getBasicParameters().setY(getY());
 		
 		ArrayList<BulletParameters> genedBullets = new ArrayList<BulletParameters>();
-		if(param.getCurrentTime()%bulletParam.getInterval() == 0) {
+		if(param.getCurrentTime()%bulletParam.getBasicParameters().getInterval() == 0) {
 //			angle--;
 			//add parameters to array and return it
 			genedBullets.add(bulletParam);

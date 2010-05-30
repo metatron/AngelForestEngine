@@ -11,12 +11,11 @@ public class StraightBullets extends AbstractBullet {
 	}
 
 	@Override
-	protected void movement(int x, int y, float w, float h, float angle) {
+	protected void movement(float x, float y, float w, float h, float angle) {
 		setAngle(angle);
 		
-		int d_y = (int)(getY()+param.getSpeed()*Math.sin(Math.toRadians(angle)));
-		int d_x = (int)(getX()+param.getSpeed()*Math.cos(Math.toRadians(angle)));
-		Log.e(null, "d_x: " + d_x + ", d_y: " + d_y + "||  inc_x: " + param.getSpeed()*Math.cos(angle) + ", inc_y: " + param.getSpeed()*Math.sin(angle));
+		int d_y = (int)(getY()+param.getBasicParameters().getSpeed()*Math.sin(Math.toRadians(angle)));
+		int d_x = (int)(getX()+param.getBasicParameters().getSpeed()*Math.cos(Math.toRadians(angle)));
 		setX(d_x);
 		setY(d_y);
 	}

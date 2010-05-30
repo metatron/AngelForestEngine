@@ -7,10 +7,10 @@ public interface IntrCharacter {
 	public static final int STATUS_DYING = 1;  //dead animating
 	public static final int STATUS_DEAD = 2;  //dead
 	
-	public void drawBefore(int x, int y, float w, float h, float angle);
-	public void drawAfter(int x, int y, float w, float h, float angle);
-	public void drawMiddle(int x, int y, float w, float h, float angle);
-	public void draw(int x, int y, float w, float h, float angle);
+	public void drawBefore(float x, float y, float w, float h, float angle);
+	public void drawAfter(float x, float y, float w, float h, float angle);
+	public void drawMiddle(float x, float y, float w, float h, float angle);
+	public void draw(float x, float y, float w, float h, float angle);
 	
 	public void delete();
 	public boolean isDeleted();

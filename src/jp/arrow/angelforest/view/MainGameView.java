@@ -4,16 +4,18 @@ import java.util.ArrayList;
 
 import jp.arrow.angelforest.engine.abstructclass.AbstractGameView;
 import jp.arrow.angelforest.engine.characters.JikiCharacter;
+import jp.arrow.angelforest.engine.param.BasicParameters;
 import jp.arrow.angelforest.engine.param.CharacterParameters;
 import jp.arrow.angelforest.engine.param.SystemParameters;
+import jp.arrow.angelforest.engine.param.TextureParameters;
 import jp.arrow.angelforest.engine.tasks.JikiBulletTask;
 import jp.arrow.angelforest.main.R;
 import android.view.MotionEvent;
 
 public class MainGameView extends AbstractGameView {
 	private static final int MAINGAMEVIEW_WAITTIME = 30;
-	private int offsetX;
-	private int offsetY;
+	private float offsetX;
+	private float offsetY;
 	
 	JikiCharacter jiki;
 	JikiBulletTask jikiBulletTask;
@@ -24,9 +26,11 @@ public class MainGameView extends AbstractGameView {
 		ArrayList<Integer> textures = new ArrayList<Integer>();
 		textures.add(R.drawable.sinderella01);
 		textures.add(R.drawable.sinderella02);
-		CharacterParameters param = new CharacterParameters(textures, null, null, null, null, 10, 10, 15, 0, 0);
-		param.setX(320/2);
-		param.setY(450);
+		BasicParameters basicParameters = new BasicParameters(320/2, 430, 10, 5, 10, 9, 0, 10, 0, 0, 0);
+		
+		CharacterParameters param = new CharacterParameters(
+				new TextureParameters(textures, null, null, null, null), 
+				basicParameters);
 		jiki = new JikiCharacter(param);
 		
 		jikiBulletTask = new JikiBulletTask(jiki);
@@ -48,8 +52,8 @@ public class MainGameView extends AbstractGameView {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (jiki != null && event.getAction() == MotionEvent.ACTION_DOWN) {
-			offsetX = (int)event.getX() - jiki.getX();
-			offsetY = (int)event.getY() - jiki.getY();
+			offsetX = event.getX() - jiki.getX();
+			offsetY = event.getY() - jiki.getY();
 
 		} else if (jiki != null && event.getAction() == MotionEvent.ACTION_MOVE) {
 			// x < 0

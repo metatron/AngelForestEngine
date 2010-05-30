@@ -28,7 +28,7 @@ public abstract class AbstractBulletTask implements IntrTask {
 			checkInsideScreen(bullet, i);
 			
 			//check for movement
-			bullet.draw(bullet.getX(), bullet.getY(), 1.0f, 1.0f, bullet.getParameter().getAngle());
+			bullet.draw(bullet.getX(), bullet.getY(), 1.0f, 1.0f, bullet.getParameter().getBasicParameters().getAngle());
 		}
 	}
 	

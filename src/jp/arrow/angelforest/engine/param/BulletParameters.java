@@ -8,20 +8,10 @@ public class BulletParameters extends CharacterParameters {
 	private int type;
 	
 	public BulletParameters(
-			ArrayList<Integer> nomotiontextureIds,
-			ArrayList<Integer> downmotiontextureIds,
-			ArrayList<Integer> upmotiontextureIds,
-			ArrayList<Integer> leftmotiontextureIds,
-			ArrayList<Integer> rightmotiontextureIds, 
-			int hp, 
-			int power,
-			int interval, 
-			float speed, 
-			float angle,
+			TextureParameters textureParameters,
+			BasicParameters basicParameters,
 			int type) {
-		super(nomotiontextureIds, downmotiontextureIds, upmotiontextureIds,
-				leftmotiontextureIds, rightmotiontextureIds, hp, power, interval,
-				speed, angle);
+		super(textureParameters, basicParameters);
 		
 		this.type = type;
 	}

@@ -8,7 +8,7 @@ import jp.arrow.angelforest.engine.param.CharacterParameters;
 public class DownMotionAnimation extends AbstractAnimation {
 
 	public DownMotionAnimation(CharacterParameters characterParameters) {
-		super(characterParameters.getDownmotiontextureIds(), characterParameters.getInterval(), characterParameters.getTimer());
+		super(characterParameters.getTextureParameters().getDownmotiontextureIds(), characterParameters.getBasicParameters().getInterval(), characterParameters.getTimer());
 	}
 
 }

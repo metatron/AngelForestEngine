@@ -7,6 +7,6 @@ import jp.arrow.angelforest.engine.param.CharacterParameters;
 
 public class LeftMotionAnimation extends AbstractAnimation {
 	public LeftMotionAnimation(CharacterParameters characterParameters) {
-		super(characterParameters.getLeftmotiontextureIds(), characterParameters.getInterval(), characterParameters.getTimer());
+		super(characterParameters.getTextureParameters().getLeftmotiontextureIds(), characterParameters.getBasicParameters().getInterval(), characterParameters.getTimer());
 	}
 }

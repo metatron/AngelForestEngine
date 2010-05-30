@@ -13,8 +13,8 @@ public interface IntrAnimation {
 	public static final int MOTION_EXPLODE = 5;
 	
 	public int getAnimationStatus();
-	public void animateBefore(int x, int y, float w, float h, float angle);
-	public void animate(int x, int y, float w, float h, float angle);
-	public void animateAfter(int x, int y, float w, float h, float angle);
+	public void animateBefore(float x, float y, float w, float h, float angle);
+	public void animate(float x, float y, float w, float h, float angle);
+	public void animateAfter(float x, float y, float w, float h, float angle);
 	public void delete();
 }

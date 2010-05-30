@@ -46,7 +46,7 @@ public abstract class AbstractCharacter implements IntrCharacter {
 			) {
 		this.param = param;
 		//no motion animation
-		if(param.getNomotiontextureIds() != null) {
+		if(param.getTextureParameters().getNomotiontextureIds() != null) {
 			nomotion = new NoMotionAnimation(param);
 		}
 		else {
@@ -55,16 +55,16 @@ public abstract class AbstractCharacter implements IntrCharacter {
 		}
 		
 		//other motion animation
-		if(param.getDownmotiontextureIds() != null) {
+		if(param.getTextureParameters().getDownmotiontextureIds() != null) {
 			downmotion = new DownMotionAnimation(param);
 		}
-		if(param.getUpmotiontextureIds() != null) {
+		if(param.getTextureParameters().getUpmotiontextureIds() != null) {
 			upmotion = new UpMotionAnimation(param);
 		}
-		if(param.getLeftmotiontextureIds() != null) {
+		if(param.getTextureParameters().getLeftmotiontextureIds() != null) {
 			leftmotion = new LeftMotionAnimation(param);
 		}
-		if(param.getRightmotiontextureIds() != null) {
+		if(param.getTextureParameters().getRightmotiontextureIds() != null) {
 			rightmotion = new RightMotionAnimation(param);
 		}
 		
@@ -74,15 +74,15 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	
 	//--------------------- Draw methods -------------------------//
 	@Override
-	public void drawBefore(int x, int y, float w, float h, float angle){
+	public void drawBefore(float x, float y, float w, float h, float angle){
 	}
 	@Override
-	public void drawAfter(int x, int y, float w, float h, float angle){
+	public void drawAfter(float x, float y, float w, float h, float angle){
 	}
 	
 	@Override
-	public void drawMiddle(int x, int y, float w, float h, float angle) {
-		if(param.getCurrentTime()%param.getInterval() == 0) {
+	public void drawMiddle(float x, float y, float w, float h, float angle) {
+		if(param.getCurrentTime()%param.getBasicParameters().getInterval() == 0) {
 			switch(AbstractAnimation.detectMotion(x, y, param.getPrev_x(), param.getPrev_y())) {
 			case IntrAnimation.MOTION_DOWN:
 				currentMotion = checkMotionDefinedAndAnimate(downmotion);
@@ -123,7 +123,7 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	}
 	
 	@Override
-	public void draw(int x, int y, float w, float h, float angle) {
+	public void draw(float x, float y, float w, float h, float angle) {
 		//check for deleted
 		if(isDeleted()) {
 			return ;
@@ -187,24 +187,24 @@ public abstract class AbstractCharacter implements IntrCharacter {
 		return status;
 	}
 
-	public int getX() {
-		return param.getX();
+	public float getX() {
+		return param.getBasicParameters().getX();
 	}
-	public void setX(int x) {
-		param.setX(x);
+	public void setX(float x) {
+		param.getBasicParameters().setX(x);
 	}
 
-	public int getY() {
-		return param.getY();
+	public float getY() {
+		return param.getBasicParameters().getY();
 	}
-	public void setY(int y) {
-		param.setY(y);
+	public void setY(float y) {
+		param.getBasicParameters().setY(y);
 	}
 	
 	public float getAngle() {
-		return param.getAngle();
+		return param.getBasicParameters().getAngle();
 	}
 	public void setAngle(float angle) {
-		param.setAngle(angle);
+		param.getBasicParameters().setAngle(angle);
 	}
 }

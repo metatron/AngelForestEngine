@@ -10,12 +10,12 @@ public abstract class AbstractBullet extends AbstractCharacter {
 	}
 	
 	@Override
-	public void drawMiddle(int x, int y, float w, float h, float angle) {
+	public void drawMiddle(float x, float y, float w, float h, float angle) {
 		super.drawMiddle(x, y, w, h, angle);
 		//bullet generating
-		if(param.getCurrentTime()%param.getInterval() == 0) {
+//		if(param.getCurrentTime()%param.getInterval() == 0) {
 			movement(x, y, w, h, angle);
-		}
+//		}
 	}
 	
 	/**
@@ -27,5 +27,5 @@ public abstract class AbstractBullet extends AbstractCharacter {
 	 * @param h
 	 * @param angle
 	 */
-	protected abstract void movement(int x, int y, float w, float h, float angle);
+	protected abstract void movement(float x, float y, float w, float h, float angle);
 }

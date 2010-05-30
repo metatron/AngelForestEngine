@@ -33,12 +33,12 @@ public abstract class AbstractAnimation implements IntrAnimation {
 	}
 	
 	@Override
-	public void animateBefore(int x, int y, float w, float h, float angle){}
+	public void animateBefore(float x, float y, float w, float h, float angle){}
 	@Override
-	public void animateAfter(int x, int y, float w, float h, float angle){}
+	public void animateAfter(float x, float y, float w, float h, float angle){}
 	
 	@Override
-	public void animate(int x, int y, float w, float h, float angle) {
+	public void animate(float x, float y, float w, float h, float angle) {
 		//
 		if(animationStatus == ANIME_NOT_STARTED || animationStatus == ANIME_FINISHED) {
 			animationStatus = ANIME_STARTED;
@@ -48,7 +48,7 @@ public abstract class AbstractAnimation implements IntrAnimation {
 		animateBefore(x, y, w, h, angle);
 		
 		//draw
-		textures.get(currentFrame).draw(x, y, w, h, angle);
+		textures.get(currentFrame).draw((int)x, (int)y, w, h, angle);
 		
 		//aftr
 		animateAfter(x, y, w, h, angle);
@@ -90,7 +90,7 @@ public abstract class AbstractAnimation implements IntrAnimation {
 	 * @param prev_y
 	 * @return
 	 */
-	public static int detectMotion(int crnt_x, int crnt_y, int prev_x, int prev_y) {
+	public static int detectMotion(float crnt_x, float crnt_y, float prev_x, float prev_y) {
 		
 		//not moving
 		if(crnt_x == prev_x && crnt_y == prev_y) {

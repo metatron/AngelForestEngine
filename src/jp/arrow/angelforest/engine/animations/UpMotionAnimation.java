@@ -8,7 +8,7 @@ import jp.arrow.angelforest.engine.param.CharacterParameters;
 public class UpMotionAnimation extends AbstractAnimation {
 
 	public UpMotionAnimation(CharacterParameters characterParameters) {
-		super(characterParameters.getUpmotiontextureIds(), characterParameters.getInterval(), characterParameters.getTimer());
+		super(characterParameters.getTextureParameters().getUpmotiontextureIds(), characterParameters.getBasicParameters().getInterval(), characterParameters.getTimer());
 	}
 
 }
