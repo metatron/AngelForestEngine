@@ -207,4 +207,11 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	public void setAngle(float angle) {
 		param.getBasicParameters().setAngle(angle);
 	}
+	
+	public float getSpeed() {
+		return param.getBasicParameters().getSpeed();
+	}
+	public void setSpeed(float speed) {
+		param.getBasicParameters().setSpeed(speed);
+	}
 }

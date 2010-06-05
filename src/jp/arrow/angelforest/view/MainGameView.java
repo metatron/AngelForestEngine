@@ -26,7 +26,21 @@ public class MainGameView extends AbstractGameView {
 		ArrayList<Integer> textures = new ArrayList<Integer>();
 		textures.add(R.drawable.sinderella01);
 		textures.add(R.drawable.sinderella02);
-		BasicParameters basicParameters = new BasicParameters(320/2, 430, 10, 5, 10, 9, 0, 10, 0, 0, 0);
+		BasicParameters basicParameters = new BasicParameters(
+				320/2, //x
+				430, 	//y
+				10, 	//speed
+				5, 		//hit_r
+				10, 	//dmg
+				9, 		//hp
+				0, 		//angle
+				10, 	//interval
+				0, 		//angle rate
+				0,		//angle accel
+				0,		//max angle
+				0, 		//speed accel
+				0		//max speed
+				);
 		
 		CharacterParameters param = new CharacterParameters(
 				new TextureParameters(textures, null, null, null, null), 
