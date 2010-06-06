@@ -6,6 +6,7 @@ import android.util.Log;
 import jp.arrow.angelforest.engine.param.BasicParameters;
 import jp.arrow.angelforest.engine.param.BulletParameters;
 import jp.arrow.angelforest.engine.param.CharacterParameters;
+import jp.arrow.angelforest.engine.param.SystemParameters;
 import jp.arrow.angelforest.engine.param.TextureParameters;
 import jp.arrow.angelforest.main.R;
 
@@ -23,12 +24,14 @@ public class JikiCharacter extends LiveCharacter {
 	
 	@Override
 	public ArrayList<BulletParameters> createOriginalBulletParameters() {
+		ArrayList<BulletParameters> genedBullets = new ArrayList<BulletParameters>();
+		
 		//TODO create bulletParam. this is temporary
 		BasicParameters basicParameters = new BasicParameters(
 				getX(), //float x 
 				getY(), //float y 
 				5, 	//float speed
-				5, 		//float hitR 
+				3, 		//float hitR 
 				10,		//int dmg
 				10,		//int hp
 				-90,	//float angle
@@ -36,7 +39,7 @@ public class JikiCharacter extends LiveCharacter {
 				0,		//float angleRate
 				0,		//float angleAccelerate
 				0,		//max angle
-				0.3f,		//float speedAccelerate
+				0.5f,		//float speedAccelerate
 				50		//float max speed
 				);
 
@@ -48,7 +51,6 @@ public class JikiCharacter extends LiveCharacter {
 		bulletParam.getBasicParameters().setX(getX());
 		bulletParam.getBasicParameters().setY(getY());
 		
-		ArrayList<BulletParameters> genedBullets = new ArrayList<BulletParameters>();
 		if(param.getCurrentTime()%bulletParam.getBasicParameters().getInterval() == 0) {
 			//add parameters to array and return it
 			genedBullets.add(bulletParam);

@@ -34,4 +34,15 @@ public class StraightBullets extends AbstractBullet {
 		setX(d_x);
 		setY(d_y);
 	}
+
+	/**
+	 * for time effect
+	 */
+	@Override
+	public void drawAfter(float x, float y, float w, float h, float angle) {
+		Log.e(null, "bullet drawafter: " + param.getTimer().getCurrent());
+		
+	}
+	
+	
 }
