@@ -9,6 +9,7 @@ public class StraightBullets extends AbstractBullet {
 
 	public StraightBullets(CharacterParameters param) {
 		super(param);
+		setAngle(getAngle() + param.getBasicParameters().getAngle_rate());
 	}
 
 	@Override
@@ -19,7 +20,7 @@ public class StraightBullets extends AbstractBullet {
 		if((basicParam.getMax_angle() >= 0 && angle <= basicParam.getMax_angle()) || //when rate is +
 			(basicParam.getMax_angle() < 0 && angle > basicParam.getMax_angle())) { //when rate is -
 			basicParam.setAngle_accelerate(basicParam.getAngle_accelerate()+basicParam.getOriginal_angle_accelerate());
-			angle += basicParam.getAngle_rate() + basicParam.getAngle_accelerate();
+//			angle += basicParam.getAngle_rate() + basicParam.getAngle_accelerate();
 		}
 		setAngle(angle);
 		
@@ -34,15 +35,4 @@ public class StraightBullets extends AbstractBullet {
 		setX(d_x);
 		setY(d_y);
 	}
-
-	/**
-	 * for time effect
-	 */
-	@Override
-	public void drawAfter(float x, float y, float w, float h, float angle) {
-		Log.e(null, "bullet drawafter: " + param.getTimer().getCurrent());
-		
-	}
-	
-	
 }

@@ -2,11 +2,10 @@ package jp.arrow.angelforest.engine.characters;
 
 import java.util.ArrayList;
 
-import android.util.Log;
 import jp.arrow.angelforest.engine.param.BasicParameters;
 import jp.arrow.angelforest.engine.param.BulletParameters;
 import jp.arrow.angelforest.engine.param.CharacterParameters;
-import jp.arrow.angelforest.engine.param.SystemParameters;
+import jp.arrow.angelforest.engine.param.SwappingBulletParameters;
 import jp.arrow.angelforest.engine.param.TextureParameters;
 import jp.arrow.angelforest.main.R;
 
@@ -26,6 +25,68 @@ public class JikiCharacter extends LiveCharacter {
 	public ArrayList<BulletParameters> createOriginalBulletParameters() {
 		ArrayList<BulletParameters> genedBullets = new ArrayList<BulletParameters>();
 		
+		/* SwappingBullet Test */
+
+//		//TODO create bulletParam. this is temporary
+//		BasicParameters basicParameters1 = new BasicParameters(
+//				getX(), //float x 
+//				getY(), //float y 
+//				10, 	//float speed
+//				3, 		//float hitR 
+//				10,		//int dmg
+//				10,		//int hp
+//				-90,	//float angle
+//				40,		//int interval
+//				0,		//float angleRate
+//				0,		//float angleAccelerate
+//				0,		//max angle
+//				0,		//float speedAccelerate
+//				50		//float max speed
+//				);
+//
+//		BulletParameters bulletParam = new BulletParameters(
+//								textureParameters, //right
+//								basicParameters1,
+//								BulletParameters.TYPE_SWAP //type
+//								);
+//		bulletParam.getBasicParameters().setX(getX());
+//		bulletParam.getBasicParameters().setY(getY());
+//		
+//		//TODO create bulletParam. this is temporary
+//		BasicParameters basicParameters2 = new BasicParameters(
+//				getX(), //float x 
+//				getY(), //float y 
+//				10, 	//float speed
+//				3, 		//float hitR 
+//				10,		//int dmg
+//				10,		//int hp
+//				-45,	//float angle
+//				40,		//int interval
+//				1,		//float angleRate
+//				0,		//float angleAccelerate
+//				0,		//max angle
+//				0,		//float speedAccelerate
+//				50		//float max speed
+//				);
+//
+//		BulletParameters bulletParam2 = new BulletParameters(
+//								textureParameters, //right
+//								basicParameters2,
+//								BulletParameters.TYPE_STRAIGHT //type
+//								);
+//		bulletParam2.getBasicParameters().setX(bulletParam.getBasicParameters().getX());
+//		bulletParam2.getBasicParameters().setY(bulletParam.getBasicParameters().getY());
+//		
+//		//create swappingBulletParam
+//		SwappingBulletParameters sparam = new SwappingBulletParameters(bulletParam, 20, bulletParam2);
+//		
+//		if(param.getCurrentTime()%bulletParam.getBasicParameters().getInterval() == 0) {
+//			//add parameters to array and return it
+//			genedBullets.add(sparam);
+//		}
+		
+		/* StraightBullet Test */
+
 		//TODO create bulletParam. this is temporary
 		BasicParameters basicParameters = new BasicParameters(
 				getX(), //float x 
@@ -35,12 +96,12 @@ public class JikiCharacter extends LiveCharacter {
 				10,		//int dmg
 				10,		//int hp
 				-90,	//float angle
-				20,		//int interval
-				0,		//float angleRate
+				100,		//int interval
+				5,		//float angleRate
 				0,		//float angleAccelerate
-				0,		//max angle
-				0.5f,		//float speedAccelerate
-				50		//float max speed
+				360,	//max angle
+				0,		//float speedAccelerate
+				0		//float max speed
 				);
 
 		BulletParameters bulletParam = new BulletParameters(
