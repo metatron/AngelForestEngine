@@ -2,6 +2,8 @@ package jp.arrow.angelforest.engine.tasks;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 import jp.arrow.angelforest.engine.abstructclass.AbstractBullet;
 import jp.arrow.angelforest.engine.abstructclass.IntrTask;
 import jp.arrow.angelforest.engine.param.SystemParameters;

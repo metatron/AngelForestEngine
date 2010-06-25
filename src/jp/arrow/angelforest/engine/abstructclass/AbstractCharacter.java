@@ -21,7 +21,7 @@ import jp.arrow.angelforest.engine.utils.Timer;
 public abstract class AbstractCharacter implements IntrCharacter {
 	private int status = IntrCharacter.STATUS_ALIVE;
 	
-	protected CharacterParameters param;
+	protected CharacterParameters charParam;
 	
 	private NoMotionAnimation nomotion;
 	private DownMotionAnimation downmotion;
@@ -42,12 +42,12 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	 * @param interval
 	 */
 	public AbstractCharacter(
-			CharacterParameters param
+			CharacterParameters charParam
 			) {
-		this.param = param;
+		this.charParam = charParam;
 		//no motion animation
-		if(param.getTextureParameters().getNomotiontextureIds() != null) {
-			nomotion = new NoMotionAnimation(param);
+		if(charParam.getTextureParameters().getNomotiontextureIds() != null) {
+			nomotion = new NoMotionAnimation(charParam);
 		}
 		else {
 			System.err.println("**No NOMOTION anime textures defined!**");
@@ -55,17 +55,17 @@ public abstract class AbstractCharacter implements IntrCharacter {
 		}
 		
 		//other motion animation
-		if(param.getTextureParameters().getDownmotiontextureIds() != null) {
-			downmotion = new DownMotionAnimation(param);
+		if(charParam.getTextureParameters().getDownmotiontextureIds() != null) {
+			downmotion = new DownMotionAnimation(charParam);
 		}
-		if(param.getTextureParameters().getUpmotiontextureIds() != null) {
-			upmotion = new UpMotionAnimation(param);
+		if(charParam.getTextureParameters().getUpmotiontextureIds() != null) {
+			upmotion = new UpMotionAnimation(charParam);
 		}
-		if(param.getTextureParameters().getLeftmotiontextureIds() != null) {
-			leftmotion = new LeftMotionAnimation(param);
+		if(charParam.getTextureParameters().getLeftmotiontextureIds() != null) {
+			leftmotion = new LeftMotionAnimation(charParam);
 		}
-		if(param.getTextureParameters().getRightmotiontextureIds() != null) {
-			rightmotion = new RightMotionAnimation(param);
+		if(charParam.getTextureParameters().getRightmotiontextureIds() != null) {
+			rightmotion = new RightMotionAnimation(charParam);
 		}
 		
 		//set default
@@ -82,8 +82,8 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	
 	@Override
 	public void drawMiddle(float x, float y, float w, float h, float angle) {
-		if(param.getCurrentTime()%param.getBasicParameters().getInterval() == 0) {
-			switch(AbstractAnimation.detectMotion(x, y, param.getPrev_x(), param.getPrev_y())) {
+		if(charParam.getCurrentTime()%charParam.getBasicParameters().getInterval() == 0) {
+			switch(AbstractAnimation.detectMotion(x, y, charParam.getPrev_x(), charParam.getPrev_y())) {
 			case IntrAnimation.MOTION_DOWN:
 				currentMotion = checkMotionDefinedAndAnimate(downmotion);
 				break;
@@ -101,8 +101,8 @@ public abstract class AbstractCharacter implements IntrCharacter {
 			}
 //			Log.e(null, "x: " + x + ", y: " + y + "prev_x: " + prev_x + ", prev_y: " + prev_y);
 			//save prev location
-			param.setPrev_x(x);
-			param.setPrev_y(y);
+			charParam.setPrev_x(x);
+			charParam.setPrev_y(y);
 		}
 		
 		currentMotion.animate(x, y, w, h, angle);
@@ -131,9 +131,9 @@ public abstract class AbstractCharacter implements IntrCharacter {
 		
 		drawBefore(x, y, w, h, angle);
 		
-		drawMiddle(x, y, w, h, angle);
+		drawMiddle(getX(), getY(), w, h, angle);
 		
-		drawAfter(x, y, w, h, angle);
+		drawAfter(getX(), getY(), w, h, angle);
 	}
 	
 	
@@ -174,12 +174,12 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	//------------------------- reset param with new param -------------------------//
 	@Override
 	public void resetParameter(CharacterParameters characterParameters) {
-		param = characterParameters;
+		charParam = characterParameters;
 	}
 	
 	@Override
 	public CharacterParameters getParameter() {
-		return param;
+		return charParam;
 	}
 	
 	//----------------------- getters and setters (for ease of use) -----------------------------------//
@@ -188,30 +188,30 @@ public abstract class AbstractCharacter implements IntrCharacter {
 	}
 
 	public float getX() {
-		return param.getBasicParameters().getX();
+		return charParam.getBasicParameters().getX();
 	}
 	public void setX(float x) {
-		param.getBasicParameters().setX(x);
+		charParam.getBasicParameters().setX(x);
 	}
 
 	public float getY() {
-		return param.getBasicParameters().getY();
+		return charParam.getBasicParameters().getY();
 	}
 	public void setY(float y) {
-		param.getBasicParameters().setY(y);
+		charParam.getBasicParameters().setY(y);
 	}
 	
 	public float getAngle() {
-		return param.getBasicParameters().getAngle();
+		return charParam.getBasicParameters().getAngle();
 	}
 	public void setAngle(float angle) {
-		param.getBasicParameters().setAngle(angle);
+		charParam.getBasicParameters().setAngle(angle);
 	}
 	
 	public float getSpeed() {
-		return param.getBasicParameters().getSpeed();
+		return charParam.getBasicParameters().getSpeed();
 	}
 	public void setSpeed(float speed) {
-		param.getBasicParameters().setSpeed(speed);
+		charParam.getBasicParameters().setSpeed(speed);
 	}
 }

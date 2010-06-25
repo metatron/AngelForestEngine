@@ -48,7 +48,10 @@ public abstract class AbstractAnimation implements IntrAnimation {
 		animateBefore(x, y, w, h, angle);
 		
 		//draw
-		textures.get(currentFrame).draw((int)x, (int)y, w, h, angle);
+		//when thinking about the angle,
+		//consider the world and which way angle will increment.
+		//in this engine, angle will be adjust to the basic-style
+		textures.get(currentFrame).draw((int)x, (int)y, w, h, -angle);
 		
 		//aftr
 		animateAfter(x, y, w, h, angle);

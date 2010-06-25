@@ -1,7 +1,8 @@
 package jp.arrow.angelforest.engine.characters.bullets;
 
-import jp.arrow.angelforest.engine.param.BulletParameters;
-import jp.arrow.angelforest.engine.param.SwappingBulletParameters;
+import android.util.Log;
+import jp.arrow.angelforest.engine.param.bulletparam.BulletParameters;
+import jp.arrow.angelforest.engine.param.bulletparam.SwappingBulletParameters;
 
 public class SwappingBullet extends StraightBullets {
 	private BulletParameters secondParam;
@@ -15,12 +16,15 @@ public class SwappingBullet extends StraightBullets {
 
 	@Override
 	public void drawAfter(float x, float y, float w, float h, float angle) {
-		if(param.getCurrentTime()%interval == 0) {
-			secondParam.setPrev_x(param.getPrev_x());
-			secondParam.setPrev_y(param.getPrev_y());
-			secondParam.getBasicParameters().setX(param.getBasicParameters().getX());
-			secondParam.getBasicParameters().setY(param.getBasicParameters().getY());
-			param = secondParam;
+		if(charParam.getCurrentTime()%interval == 0) {
+			secondParam.setPrev_x(charParam.getPrev_x());
+			secondParam.setPrev_y(charParam.getPrev_y());
+			secondParam.getBasicParameters().setX(charParam.getBasicParameters().getX());
+			secondParam.getBasicParameters().setY(charParam.getBasicParameters().getY());
+			charParam = secondParam;
+//			float newangle = getAngle() + secondParam.getBulletId()*charParam.getBasicParameters().getAngle_rate();
+			dirAngle = -charParam.getBasicParameters().getOriginal_angle();
+			Log.e(null, "dirAngle: " + dirAngle);
 		}
 	}
 }

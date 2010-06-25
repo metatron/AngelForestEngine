@@ -4,6 +4,8 @@ import android.util.Log;
 import jp.arrow.angelforest.engine.param.CharacterParameters;
 
 public abstract class AbstractBullet extends AbstractCharacter {
+	//this is the facing direction angle
+	protected float dirAngle;
 
 	public AbstractBullet(CharacterParameters param) {
 		super(param);
@@ -11,11 +13,9 @@ public abstract class AbstractBullet extends AbstractCharacter {
 	
 	@Override
 	public void drawMiddle(float x, float y, float w, float h, float angle) {
-		super.drawMiddle(x, y, w, h, angle);
+		super.drawMiddle(x, y, w, h, dirAngle);
 		//bullet generating
-//		if(param.getCurrentTime()%param.getInterval() == 0) {
-			movement(x, y, w, h, angle);
-//		}
+		movement(x, y, w, h, angle);
 	}
 	
 	/**

@@ -13,7 +13,7 @@ import jp.arrow.angelforest.main.R;
 import android.view.MotionEvent;
 
 public class MainGameView extends AbstractGameView {
-	private static final int MAINGAMEVIEW_WAITTIME = 30;
+	private static final int MAINGAMEVIEW_WAITTIME = 50;
 	private float offsetX;
 	private float offsetY;
 	
@@ -27,13 +27,13 @@ public class MainGameView extends AbstractGameView {
 		textures.add(R.drawable.sinderella01);
 		textures.add(R.drawable.sinderella02);
 		BasicParameters basicParameters = new BasicParameters(
-				320/2, //x
+				320/2,  //x
 				430, 	//y
 				10, 	//speed
 				5, 		//hit_r
 				10, 	//dmg
 				9, 		//hp
-				0, 		//angle
+				10, 	//angle
 				10, 	//interval
 				0, 		//angle rate
 				0,		//angle accel
@@ -53,7 +53,8 @@ public class MainGameView extends AbstractGameView {
 	int angle = 0;
 	@Override
 	protected void drawMiddle() {
-		jiki.draw(jiki.getX(), jiki.getY(), 1, 1, angle++);
+		jiki.setAngle(angle++);
+		jiki.draw(jiki.getX(), jiki.getY(), 1, 1, jiki.getAngle());
 		
 		jikiBulletTask.doTask();
 	}

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import jp.arrow.angelforest.engine.abstructclass.AbstractBullet;
 import jp.arrow.angelforest.engine.characters.bullets.StraightBullets;
 import jp.arrow.angelforest.engine.characters.bullets.SwappingBullet;
-import jp.arrow.angelforest.engine.param.BulletParameters;
-import jp.arrow.angelforest.engine.param.SwappingBulletParameters;
+import jp.arrow.angelforest.engine.param.bulletparam.BulletParameters;
+import jp.arrow.angelforest.engine.param.bulletparam.SwappingBulletParameters;
 
 public class BulletFactory {
 	public static ArrayList<AbstractBullet> create(ArrayList<BulletParameters> bulletParams) {

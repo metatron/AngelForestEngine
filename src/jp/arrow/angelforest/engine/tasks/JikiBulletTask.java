@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import android.util.Log;
 
 import jp.arrow.angelforest.engine.characters.JikiCharacter;
-import jp.arrow.angelforest.engine.param.BulletParameters;
 import jp.arrow.angelforest.engine.param.SystemParameters;
+import jp.arrow.angelforest.engine.param.bulletparam.BulletParameters;
 import jp.arrow.angelforest.engine.utils.BulletFactory;
 
 public class JikiBulletTask extends AbstractBulletTask {
